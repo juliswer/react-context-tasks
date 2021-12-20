@@ -14,9 +14,14 @@ const TaskForm = () => {
         })
     }
 
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log(task);
+    }
+
   return (
     <div className="flex justify-center items-center h-3/4">
-      <form className="bg-gray-900 p-10">
+      <form className="bg-gray-900 p-10" onSubmit={handleSubmit}>
         <h2 className="mb-7 text-3x1">Add a Task</h2>
 
         <div className="mb-5">
