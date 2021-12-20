@@ -1,6 +1,6 @@
 import {createContext} from 'react';
 
-export const GlobalContext = createContext({
+const initialState = {
     tasks: [
         {
             id: "1",
@@ -15,10 +15,17 @@ export const GlobalContext = createContext({
             done: false
         }
     ],
-});
+}
+
+export const GlobalContext = createContext(initialState);
 
 export const ContextProvider = ({children}) => {
-    return <GlobalContext.Provider>
+
+    const addTask = (task) => {
+        console.log(task);
+    }
+
+    return <GlobalContext.Provider value={{ ...initialState, addTask}} >
         {children}
     </GlobalContext.Provider>
 }
