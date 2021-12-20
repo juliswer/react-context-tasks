@@ -31,7 +31,13 @@ export const ContextProvider = ({children}) => {
         })
     }
 
-    return <GlobalContext.Provider value={{ ...state, addTask}} >
+    const deleteTask = () => {
+        dispatch({
+            type: 'DELETE_TASK',
+        })
+    }
+
+    return <GlobalContext.Provider value={{ ...state, addTask, deleteTask }} >
         {children}
     </GlobalContext.Provider>
 }
