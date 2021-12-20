@@ -27,7 +27,7 @@ export const ContextProvider = ({children}) => {
     const addTask = (task) => {
         dispatch({
             type: 'ADD_TASK',
-            payload: {id: 1, title: 'nuevo'}
+            payload: task
         })
     }
 
