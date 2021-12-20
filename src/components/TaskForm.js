@@ -1,6 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
+import {GlobalContext} from '../context/GlobalContext';
 
 const TaskForm = () => {
+    const {tasks} = useContext(GlobalContext);
+
+    console.log(tasks);
 
     const [task, setTask] = useState({
         title: "",
