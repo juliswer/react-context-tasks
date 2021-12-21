@@ -12,18 +12,19 @@ const TaskForm = () => {
         title: "",
         description: "",
     })
-    
+
     useEffect(() => {
       const taskFound = tasks.find(task => task.id === params.id)
       if (taskFound) {
         setTask({
+          id: taskFound.id,
           title: taskFound.title,
           description: taskFound.description,
         })
       } else {
         console.log('creating');
       }
-    }, [params.id]);
+    }, [params.id, tasks]);
 
 
     const handleChange = e => {
@@ -42,7 +43,9 @@ const TaskForm = () => {
   return (
     <div className="flex justify-center items-center h-3/4">
       <form className="bg-gray-900 p-10" onSubmit={handleSubmit}>
-        <h2 className="mb-7 text-3x1">Add a Task</h2>
+        <h2 className="mb-7 text-3x1">{
+          task.id ? 'Edit Task' : 'Add Task'
+        }</h2>
 
         <div className="mb-5">
           <input
