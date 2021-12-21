@@ -3,7 +3,7 @@ import { GlobalContext } from "../context/GlobalContext";
 import {Link} from 'react-router-dom';
 
 const TaskList = () => {
-  const { tasks, deleteTask, toggledTask } = useContext(GlobalContext);
+  const { tasks, deleteTask, toggleTaskDone } = useContext(GlobalContext);
 
   return (
     <div className="flex justify-center">
@@ -19,7 +19,7 @@ const TaskList = () => {
               <h5>{task.id}</h5>
               <p>{task.description}</p>
               <button className="bg-purple-600 hover:bg-purple-500 py-1 px-3 mt-2" onClick={() => {
-                toggledTask(task.id);
+                toggleTaskDone(task.id);
               }}>{task.done ? 'Undone' : 'Done'}</button>
             </div>
             <div>
