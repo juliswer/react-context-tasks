@@ -3,17 +3,18 @@ import {GlobalContext} from '../context/GlobalContext';
 import { useNavigate, useParams } from "react-router-dom";
 
 const TaskForm = () => {
-    const {addTask} = useContext(GlobalContext);
+    const {addTask, tasks} = useContext(GlobalContext);
     const navigate = useNavigate();
     const params = useParams();
 
     useEffect(() => {
-      if (params.id) {
+      const taskFound = tasks.find(task => task.id === params.id)
+      if (taskFound) {
         console.log('editing');
       } else {
         console.log('creating');
       }
-    })
+    }, [params.id]);
 
     const [task, setTask] = useState({
         title: "",
@@ -43,6 +44,7 @@ const TaskForm = () => {
             type="text"
             className="py-3 px-4 focus: outline-none focus:text-gray-100 bg-gray-700 w-full"
             name="title"
+            value={task.title}
             onChange={handleChange}
             placeholder="Write a title"
           />
@@ -51,6 +53,7 @@ const TaskForm = () => {
               name="description"
               placeholder="Write a description"
               rows="2"
+              value={task.description}
               onChange={handleChange}
               className="mt-5 py-3 px-4 focus: outline-none focus:text-gray-100 bg-gray-700 w-full"
             ></textarea>
