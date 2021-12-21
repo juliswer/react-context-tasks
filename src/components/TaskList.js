@@ -17,6 +17,7 @@ const TaskList = () => {
             <div>
               <h1>{task.title}</h1>
               <h5>{task.id}</h5>
+              <p>{task.description}</p>
             </div>
             <div>
               <Link className="bg-gray-600 hover:bg-gray-500 py-2 px-4 mr-2" to={`/edit/${task.id}`}>Edit</Link>
