@@ -10,6 +10,19 @@ export default function appReducer(state, action) {
             return {
                 tasks: [...state.tasks.filter(task => task.id !== action.payload)]
             }
+        case 'UPDATE_TASK':
+            const updatedTask = action.payload;
+            const updatedTasks = state.tasks.map(task => {
+                if(task.id === updatedTask.id) {
+                    task.title = updatedTask.title;
+                    task.description = updatedTask.description;
+                    task.done = updatedTask.done;
+                }
+                return task
+            })
+            return {
+                tasks: updatedTasks
+            }
         default:
             break;
     }

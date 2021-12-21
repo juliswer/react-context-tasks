@@ -3,7 +3,7 @@ import {GlobalContext} from '../context/GlobalContext';
 import { useNavigate, useParams } from "react-router-dom";
 
 const TaskForm = () => {
-    const {addTask, tasks} = useContext(GlobalContext);
+    const {addTask, tasks, updateTask} = useContext(GlobalContext);
     const navigate = useNavigate();
     const params = useParams();
 
@@ -21,8 +21,6 @@ const TaskForm = () => {
           title: taskFound.title,
           description: taskFound.description,
         })
-      } else {
-        console.log('creating');
       }
     }, [params.id, tasks]);
 
@@ -36,7 +34,12 @@ const TaskForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        addTask(task);
+        if (task.id) {
+          updateTask(task);
+        } else {
+          addTask(task);
+        }
+
         navigate("/");
     }
 
