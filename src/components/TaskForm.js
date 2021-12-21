@@ -7,19 +7,24 @@ const TaskForm = () => {
     const navigate = useNavigate();
     const params = useParams();
 
+    const [task, setTask] = useState({
+        id: "",
+        title: "",
+        description: "",
+    })
+    
     useEffect(() => {
       const taskFound = tasks.find(task => task.id === params.id)
       if (taskFound) {
-        console.log('editing');
+        setTask({
+          title: taskFound.title,
+          description: taskFound.description,
+        })
       } else {
         console.log('creating');
       }
     }, [params.id]);
 
-    const [task, setTask] = useState({
-        title: "",
-        description: "",
-    })
 
     const handleChange = e => {
         setTask({
