@@ -1,10 +1,19 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import {GlobalContext} from '../context/GlobalContext';
 import { useNavigate, useParams } from "react-router-dom";
 
 const TaskForm = () => {
     const {addTask} = useContext(GlobalContext);
     const navigate = useNavigate();
+    const params = useParams();
+
+    useEffect(() => {
+      if (params.id) {
+        console.log('editing');
+      } else {
+        console.log('creating');
+      }
+    })
 
     const [task, setTask] = useState({
         title: "",
