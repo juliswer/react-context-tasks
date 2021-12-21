@@ -23,6 +23,13 @@ export default function appReducer(state, action) {
             return {
                 tasks: updatedTasks
             }
+        case 'TOGGLE_TASK':
+            const toggledTasks = (id) => {
+                state.tasks.find(task => task.id === action.payload);
+            }
+            return {
+                tasks: toggledTasks
+            }
         default:
             break;
     }
