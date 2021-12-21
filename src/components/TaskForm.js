@@ -67,7 +67,7 @@ const TaskForm = () => {
             ></textarea>
 
             <button className="bg-green-600 w-full hover:bg-green-500 py-2 px-4 mt-5">
-                Create Task
+                {task.id ? 'Edit' : 'Create'} Task
             </button>
           </div>
         </div>
